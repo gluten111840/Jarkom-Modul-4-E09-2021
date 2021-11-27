@@ -2,6 +2,12 @@
 
 # VLSM
 
+## Penjelasan VLSM
+
+Untuk perhitungan IP dengan menggunakan VLSM, hal yang pertama kita lakukan adalah mengelompokkan setiap PC yang terhubung ke router. Jika terdapat 2 atau lebih PC yang terhubung dengan router namun dengan switch yang sama, maka akan dimasukkan ke dalam 1 kelompok.
+
+Setelah itu, kita menjumlahkan usable IP atau host yang dimiliki oleh masing-masing PC, setiap PC yang terhubung dengan 1 router, maka jumlah hostnya akan ditambahkan dengan 1, dan juga ketika terhubung dengan 2 router, maka jumlah hostnya akan ditambahkan dengan 2, lalu untuk router yang berhubungan dengan router lain, jumlah hostnya adalah 2, karena dia terhubung dengan PC dan juga router lain.
+
 ![Untitled](Jarkom-Modul-4-E09-2021%204710b6be85a44793869125203c80a906/Untitled.png)
 
 | Subnet | Netmask | IP | Subnet Mask | Jumlah IP |
@@ -65,3 +71,345 @@ Tabel
 | A14 | /30 | 192.204.128.0 | 255.255.255.252 |
 | A15 | /30 | 192.204.16.0 | 255.255.255.252 |
 |  |  |  |  |
+
+# Pucci
+
+```jsx
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.205.16.2
+netmask 255.255.255.252
+gateway 192.205.16.1
+
+auto eth1
+iface eth1 inet static
+address 192.205.8.1
+netmask 255.255.255.128
+
+auto eth2
+iface eth2 inet static
+address 192.205.0.1
+netmask 255.255.248.0
+```
+
+### Routing
+
+```bash
+route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.205.16.1
+```
+
+# Jipangu
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.205.8.2
+netmask 255.255.255.128
+gateway 192.205.8.1
+```
+
+# Courtyard
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.205.0.3
+netmask 255.255.248.0
+gateway 192.205.0.1
+```
+
+# Calmbelt
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.205.0.2
+netmask 255.255.248.0
+gateway 192.205.0.1
+```
+
+# Water7
+
+```jsx
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.205.64.2
+netmask 255.255.255.252
+gateway 192.205.64.1
+
+auto eth1
+iface eth1 inet static
+address 192.205.32.1
+netmask 255.255.252.0
+
+auto eth2
+iface eth2 inet static
+address 192.205.16.1
+netmask 255.255.255.252
+```
+
+### Routing
+
+```bash
+route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.205.64.1
+route add -net 192.205.0.0 netmask 255.255.248.0 gw 192.205.16.2
+route add -net 192.205.8.0 netmask 255.255.255.128 gw 192.205.16.2
+```
+
+# Cipher
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.205.32.2
+netmask 255.255.252.0
+gateway 192.205.32.1
+```
+
+# Seastone
+
+```jsx
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.204.4.3
+netmask 255.255.255.0
+gateway 192.204.4.1
+
+auto eth1
+iface eth1 inet static
+address 192.204.0.1
+netmask 255.255.252.0
+```
+
+### Routing
+
+```bash
+route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.204.4.1
+```
+
+# Elena
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.204.0.2
+netmask 255.255.252.0
+gateway 255.255.252.1
+```
+
+# Oimo
+
+```jsx
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.204.8.2
+netmask 255.255.255.252
+gateway 192.204.8.1
+
+auto eth1
+iface eth1 inet static
+address 192.204.4.1
+netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+address 192.204.16.1
+netmask 255.255.255.252
+```
+
+### Routing
+
+```bash
+route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.204.8.1
+route add -net 192.204.0.0 netmask 255.255.252.0 gw 192.204.4.3
+```
+
+# EniesLobby
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.204.4.2
+netmask 255.255.255.0
+gateway 192.204.4.1
+```
+
+# Fukurou
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.204.16.2
+netmask 255.255.254.0
+gateway 192.204.16.1
+```
+
+# Alabasta
+
+```jsx
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.204.32.2
+netmask 255.255.254.0
+gateway 192.204.32.1
+
+auto eth1
+iface eth1 inet static
+address 192.204.34.1
+netmask 255.255.255.240
+```
+
+### Routing
+
+```bash
+route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.204.32.1
+```
+
+# Jorge
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.204.34.2
+netmask 255.255.255.240
+gateway 192.204.34.1
+```
+
+# Guanhao
+
+```jsx
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.204.64.2
+netmask 255.255.255.252
+gateway 192.204.64.1
+
+auto eth1
+iface eth1 inet static
+address 192.204.36.1
+netmask 255.255.252.0
+
+auto eth2
+iface eth2 inet static
+address 192.204.8.1
+netmask 255.255.255.252
+
+auto eth3
+iface eth3 inet static
+address 192.204.32.1
+netmask 255.255.254.0
+```
+
+### Routing
+
+```bash
+route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.204.64.1
+route add -net 192.204.0.0 netmask 255.255.252.0 gw 192.204.8.2
+route add -net 192.204.4.0 netmask 255.255.255.0 gw 192.204.8.2
+route add -net 192.204.16.0 netmask 255.255.254.0 gw 192.204.8.2
+route add -net 192.204.34.0 netmask 255.255.255.240 gw 192.204.32.2
+```
+
+# Maingate
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.204.32.3
+netmask 255.255.254.0
+gateway 192.204.32.1
+```
+
+# Jabra
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.204.36.2
+netmask 255.255.252.0
+gateway 192.204.36.1
+```
+
+# Foosha
+
+```jsx
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+address 192.205.128.1
+netmask 255.255.252.0
+
+auto eth2
+iface eth2 inet static
+address 192.204.128.1
+netmask 255.255.255.252
+
+auto eth3
+iface eth3 inet static
+address 192.205.64.1
+netmask 255.255.255.252
+
+auto eth4
+iface eth4 inet static
+address 192.204.64.1
+netmask 255.255.255.252
+```
+
+### Routing
+
+```bash
+route add -net 192.205.0.0 netmask 255.255.248.0 gw 192.205.64.2
+route add -net 192.205.8.0 netmask 255.255.255.128 gw 192.205.64.2
+route add -net 192.205.16.0 netmask 255.255.255.252 gw 192.205.64.2
+route add -net 192.205.32.0 netmask 255.255.252.0 gw 192.205.64.2
+route add -net 192.204.36.0 netmask 255.255.252.0 gw 192.204.64.2
+route add -net 192.204.8.0 netmask 255.255.255.252 gw 192.204.64.2
+route add -net 192.204.32.0 netmask 255.255.254.0 gw 192.204.64.2
+route add -net 192.204.34.0 netmask 255.255.255.240 gw 192.204.64.2
+route add -net 192.204.4.0 netmask 255.255.255.0 gw 192.204.64.2
+route add -net 192.204.0.0 netmask 255.255.252.0 gw 192.204.64.2
+route add -net 192.204.16.0 netmask 255.255.254.0 gw 192.204.64.2
+```
+
+# Doriki
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.204.128.2
+netmask 255.255.255.252
+gateway 192.204.128.1
+```
+
+# Blueno
+
+```jsx
+auto eth0
+iface eth0 inet static
+address 192.205.128.2
+netmask 255.255.252.0
+gateway 192.205.128.1
+```
