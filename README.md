@@ -204,7 +204,7 @@ Tabel
 | A15 | /30 | 192.204.16.0 | 255.255.255.252 |
 |  |  |  |  |
 
-Lalu kita memasukkan config IP dan routing ke dalam GNS3 sesuai dengan config di bawah ini :
+Lalu kita memasukkan config IP dan routing ke dalam GNS3 sesuai dengan config di bawah ini : \
 n.b. Semua PC dimasukkan ```nameserver 192.168.122.1``` ke dalam /etc/resolv.conf.
 
 # Pucci
