@@ -8,7 +8,11 @@ Untuk perhitungan IP dengan menggunakan VLSM, hal yang pertama kita lakukan adal
 
 Setelah itu, kita menjumlahkan usable IP atau host yang dimiliki oleh masing-masing PC, setiap PC yang terhubung dengan 1 router, maka jumlah hostnya akan ditambahkan dengan 1, dan juga ketika terhubung dengan 2 router, maka jumlah hostnya akan ditambahkan dengan 2, lalu untuk router yang berhubungan dengan router lain, jumlah hostnya adalah 2, karena dia terhubung dengan PC dan juga router lain.
 
+## Pemetaan Subnet A
+
 ![Untitled](Jarkom-Modul-4-E09-2021%204710b6be85a44793869125203c80a906/Untitled.png)
+
+Lalu direpresentasikan dengan tabel, didapatkan data sebagai berikut.
 
 | Subnet | Netmask | IP | Subnet Mask | Jumlah IP |
 | --- | --- | --- | --- | --- |
@@ -29,7 +33,38 @@ Setelah itu, kita menjumlahkan usable IP atau host yang dimiliki oleh masing-mas
 | A15 (Fukurou) | /30 | 192.204.27.164 | 255.255.255.252 | 2 |
 | Total | /19 |  | 255.255.224.0 | 5845 |
 
-![Modul4 (4).jpg](Jarkom-Modul-4-E09-2021%204710b6be85a44793869125203c80a906/Modul4_(4).jpg)
+![image](https://user-images.githubusercontent.com/7587945/143666429-aa44564f-07b8-4404-a669-4f02c4778ad2.png)
+
+Setelah itu, kita menghitung IP dari setiap subnet. Dari jumlah IP keseluruhan, didapatkan sebesar 5845 IP, jika dikonversikan ke dalam Netmask, didapatkan Netmask = /19. Pada tabel di modul, diketahui bahwa Netmask /19 memiliki Wildcard 0.0.31.255, di mana digit ketiga yaitu 31, karena dimulai dari 0, maka range digit ketiga adalah 0 - 31, yang menandakan ada 32 macam untuk digit ketiga. Dalam perhitungan ini, kita menggunakan tree agar mudah. Prefix IP yang kami gunakan adalah 192.204 dengan IP besar 192.204.0.0 /19.
+
+Dari IP 192.204.0.0 /19 ini, kita membagi rangenya menjadi 2 sama rata. Di sisi kiri memiliki range IP 192.204.0.0 /20 hingga 192.204.15.0 /20. Sedangkan di sisi kanan, rangenya adalah 192.204.16.0 /20 hingga 192.204.31.0 /20. Karena pada hasil subnetting tidak ada yang membutuhkan netmask /20, maka kita meneruskan pembagian. Pada sisi kiri, kita membagi 2 sama rata lagi, sehingga menjadi range 192.204.0.0 /21 hingga 192.204.7.0 /21 dan 192.204.8.0 /21 hingga 192.204.15.0 /21.
+
+![image](https://user-images.githubusercontent.com/7587945/143666474-c1ee61ce-2949-4fa5-9500-58a8a710a29c.png)
+
+Diketahui bahwa terdapat 1 subnet yang membutuhkan netmask /21, yaitu subnet A1. Maka kita assign A1 dengan range IP 192.204.0.0 /21 hingga 192.204.7.0 /21, dan menjadikan range tersebut sebagai leave serta tidak perlu dibagi lagi. Setelah itu kita melanjutkan sisi kanan hingga kita mendapatkan semua subnet A mendapatkan IP.
+
+![Modul4 (4).jpg](Jarkom-Modul-4-E09-2021%204710b6be85a44793869125203c80a906/Modul4_(4).jpg)  
+
+Dari hasil perhitungan di atas, didapatkan rekap IP setiap subnet sebagai berikut.
+
+| Subnet | Netmask | IP | Subnet Mask | Jumlah IP |
+| --- | --- | --- | --- | --- |
+| A1 (Calmbelt + Courtyard) | /21 | 192.204.0.0 | 255.255.248.0 | 2021 |
+| A2 (Jipangu) | /25 | 192.204.27.0 | 255.255.255.128 | 101 |
+| A3 (Cipher) | /22 | 192.204.8.0 | 255.255.252.0 | 701 |
+| A4 (Enieslobby) | /24 | 192.204.26.0 | 255.255.255.0 | 252 |
+| A5 (Pucci + Water7) | /30 | 192.204.27.144 | 255.255.255.252 | 2 |
+| A6 (Water7 + Foosha) | /30 | 192.204.27.148 | 255.255.255.252 | 2 |
+| A7 (Blueno) | /22 | 192.204.16.0 | 255.255.252.0 | 1001 |
+| A8 (Jabra) | /22 | 192.204.12.0 | 255.255.252.0 | 521 |
+| A9 (Foosha + Guanhao) | /30 | 192.204.27.152 | 255.255.255.252 | 2 |
+| A10 (Guanhao + Oimo) | /30 | 192.204.27.156 | 255.255.255.252 | 2 |
+| A11 (Elena) | /22 | 192.204.20.0 | 255.255.252.0 | 721 |
+| A12 (Guanhao + Maingate + Alabasta) | /23 | 192.204.24.0 | 255.255.254.0 | 502 |
+| A13 (Jorge) | /28 | 192.204.27.128 | 255.255.255.240 | 13 |
+| A14 (Doriki) | /30 | 192.204.27.160 | 255.255.255.252 | 2 |
+| A15 (Fukurou) | /30 | 192.204.27.164 | 255.255.255.252 | 2 |
+| Total | /19 |  | 255.255.224.0 | 5845 |
 
 # CIDR
 
