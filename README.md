@@ -1,5 +1,10 @@
 # Jarkom-Modul-4-E09-2021
 
+## Nama Anggota Kelompok :
+## 1. Dwinanda Bagoes Ansori (05111940000010)
+## 2. Bayu Eka Prawira (05111940000042)
+## 3. Kelvin Andersen (05111940000080)
+
 # VLSM
 
 ## Penjelasan VLSM
